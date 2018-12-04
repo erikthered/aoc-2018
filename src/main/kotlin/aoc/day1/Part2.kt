@@ -5,16 +5,16 @@ import java.io.File
 import kotlin.system.measureTimeMillis
 
 fun main(args: Array<String>) {
-    val input = File(getResourceUri("input1.txt")).bufferedReader()
-            .lineSequence().map { it.toInt() }.toList()
-
-    val changeSeq = generateSequence { input.asIterable() }.flatten()
-
-    var currFreq = 0
-    val freqs = mutableSetOf<Int>()
-    var iters = 0
 
     val timeTaken = measureTimeMillis {
+        val input = File(getResourceUri("input1.txt")).bufferedReader()
+                .lineSequence().map { it.toInt() }.toList()
+
+        val changeSeq = generateSequence { input.asIterable() }.flatten()
+
+        var currFreq = 0
+        val freqs = mutableSetOf<Int>()
+        var iters = 0
         changeSeq
                 .map {
                     currFreq += it
@@ -26,9 +26,9 @@ fun main(args: Array<String>) {
                     iters++
                 }
 
+        println("first repeated freq: $currFreq")
+        println("iterations: $iters")
     }
 
-    println("first repeated freq: $currFreq")
-    println("iterations: $iters")
     println("time taken: ${timeTaken}ms")
 }
