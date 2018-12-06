@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
             Claim(id, Pair(x, y), Pair(w, h))
         }
 
-        val occupiedPoints = claims.flatMap { claim -> producePoints(claim.start, claim.dimensions)}.groupingBy { it }.eachCount()
+        val occupiedPoints = claims.flatMap { claim -> producePoints(claim.start, claim.dimensions) }.groupingBy { it }.eachCount()
 
         val conflicts = occupiedPoints.filterValues { it > 1 }
 
@@ -39,8 +39,8 @@ data class Claim(val id: String, val start: Pair<Int, Int>, val dimensions: Pair
 fun producePoints(point: Pair<Int, Int>, dimensions: Pair<Int, Int>): List<Pair<Int, Int>> {
     val points = mutableListOf<Pair<Int, Int>>()
 
-    for (y in point.second..(point.second + dimensions.second-1)) {
-        for (x in point.first..(point.first + dimensions.first-1)) {
+    for (x in point.first..(point.first + dimensions.first - 1)) {
+        for (y in point.second..(point.second + dimensions.second - 1)) {
             points.add(x to y)
         }
     }
