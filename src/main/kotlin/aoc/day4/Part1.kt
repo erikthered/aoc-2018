@@ -57,7 +57,17 @@ fun main(args: Array<String>) {
 
         println("Minute: $minute, $occurrences times")
 
-        println("Checksum: ${id * minute}")
+        println("Checksum 1: ${id * minute}")
+
+
+        val (id2, mins2) = minutesAsleep.maxBy { entry ->
+            //find minute with most occurrences for each record
+            entry.value.groupingBy { it }.eachCount().maxBy { it.value }!!.value
+        }!!
+
+        val min2 = mins2.groupingBy { it }.eachCount().maxBy { it.value }!!.key
+
+        println("Checksum 2: ${id2 * min2}")
 
     }
     println("time taken: ${timeTaken}ms")
