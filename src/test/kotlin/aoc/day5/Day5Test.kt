@@ -4,7 +4,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 
-class Part1Test {
+class Day5Test {
 
     @Test
     fun testCollapse() {
