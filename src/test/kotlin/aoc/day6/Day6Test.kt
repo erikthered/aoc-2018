@@ -27,6 +27,12 @@ class Day6Test {
     }
 
     @Test
+    fun testFindAreaUnderMinTotalDistance() {
+        val points = testInput.map(::parsePointString)
+        assertEquals(16, findAreaUnderMinTotalDistance(points, 32))
+    }
+
+    @Test
     fun testPointParsing() {
         assertEquals(
                 listOf(1 to 1, 1 to 6, 8 to 3, 3 to 4, 5 to 5, 8 to 9),
